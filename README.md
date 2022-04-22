@@ -7,11 +7,17 @@ The program you write is expected to match the output in the examples shown
 alongside the requirements, and the code is expected to also make a series of
 automated tests written in `cards.test.js` pass.
 
-You should not have to change anything in the `main.js` file, but if you want
-to, you certainly can.
+You will have to change some code in `main.js` in order to fulfill some
+requirements. The existing code is there so that you do not have to
+concern yourself with parsing the program's arguments.
 
 There are only automated tests written for the `deal` function. That is intentional.
 You are only expected to make these tests pass.
+
+You'll notice that the `deal` function can take a number that is more than 5, while
+the program's specifications only allow for up to 5 cards to be dealt. That is
+intentional. Your implementation is expected both to make the automated tests pass
+_and_ satisfy the "Requirements" section.
 
 ## Setting up
 

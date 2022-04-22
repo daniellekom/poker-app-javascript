@@ -22,7 +22,7 @@ describe('cards test suite', () => {
     expect(endsWithHeart || endsWithSpade || endsWithClub || endsWithDiamond);
   });
 
-  it('throws an error if more than 53 cards are requested', () => {
+  it('throws an error if more than 52 cards are requested', () => {
     expect(deal(53)).toThrowError(NotEnoughCardsError);
   });
 
