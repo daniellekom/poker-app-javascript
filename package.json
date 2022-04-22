@@ -1,0 +1,12 @@
+{
+  "name": "cards",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "jest cards.test.js"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "jest": "26.6.0"
+  }
+}
