@@ -1,6 +1,15 @@
 const {getSpecialHand} = require ("./specialHands")
 
 function deal(numCardsToDeal) {
+  // if (numCardsToDeal < 1) {
+  //   throw new Error('Must request at least 1 card')
+  // }
+
+  // if (numCardsToDeal > 52) {
+  //   throw new Error('User requested too many cards')
+  // }
+
+
   // Write your code to generate a deal of cards in this function
   const values = [
     "A",
@@ -19,11 +28,15 @@ function deal(numCardsToDeal) {
   ];
   const suits = ["*", "^", "%", "@"];
 
-  //seperating values and suits so we can handle them seperately
   let shuffledDeck = values
-    .flatMap((value) => suits.map((suit) => ({ value, suit })))
-    .sort(() => Math.random() - 0.5)
-    .slice(0, numCardsToDeal);
+  .reduce((acc,curr) =>{
+    for (const suit of suits){
+      acc.push(curr + suit);
+    }
+    return acc;
+  }, [])
+  .sort(() =>(Math.random() > 0.5 ? 1 : -1))
+  .slice(0, numCardsToDeal)
 
   return shuffledDeck;
 }
