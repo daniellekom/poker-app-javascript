@@ -15,6 +15,7 @@ if (numCards < 1 || numCards > 5) {
   console.log( 'You must ask for a number between 1 and 5')
 }
 
+
 const cards = deal(numCards);
 report(cards);
 
