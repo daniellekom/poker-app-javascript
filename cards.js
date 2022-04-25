@@ -1,3 +1,5 @@
+const {getSpecialHand} = require ("./specialHands")
+
 function deal(numCardsToDeal) {
   // Write your code to generate a deal of cards in this function
   const values = [
@@ -39,23 +41,6 @@ function report(cards) {
     console.log(`You drew: (${formattedCards})` );
 }
 
-function getSpecialHand(cards){
-  if(isRoyalFlush(cards)) return 'royal flush'
-
-}
-
-function isRoyalFlush(cards) {
-  const sameSuit = new Set(cards.map((card) => card.suit)).size === 1;
-  if (!sameSuit) return false;
-
-  const royalNumbers =
-    cards
-      .map((card) => card.value)
-      .sort()
-      .join() === "10,A,J,K,Q";
-  if (royalNumbers) return true;
-  return false;
-}
 
 class NotEnoughCardsError extends Error {
   constructor() {
