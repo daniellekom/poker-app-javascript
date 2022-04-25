@@ -17,14 +17,8 @@ function deal(numCardsToDeal) {
   ];
   const suits = ["*", "^", "%", "@"];
 
-  let shuffledDeck = values
-  .reduce((acc,curr) =>{
-    for (const suit of suits){
-      acc.push(curr + suit);
-    }
-    return acc;
-  }, [])
-  .sort(() =>(Math.random() > 0.5 ? 1 : -1))
+  let shuffledDeck = values.flatMap(value => suits.map(suit =>(`${value}${suit}`)))
+  .sort(() =>(Math.random() - 0.5))
   .slice(0, numCardsToDeal)
 
   return shuffledDeck;
