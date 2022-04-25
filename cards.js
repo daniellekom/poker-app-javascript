@@ -17,17 +17,20 @@ function deal(numCardsToDeal) {
   ];
   const suits = ["*", "^", "%", "@"];
 
-  let shuffledDeck = values.flatMap(value => suits.map(suit =>(`${value}${suit}`)))
+  //seperating values and suits so we can handle them seperately 
+  let shuffledDeck = values.flatMap(value => suits.map(suit =>({value, suit})))
   .sort(() =>(Math.random() - 0.5))
   .slice(0, numCardsToDeal)
 
   return shuffledDeck;
 }
 
+//gathering them back here
 function report(cards) {
+  const formattedCards =  cards.map( card => `${card.value}${card.suit}`)
   // Do the required reporting on a given array of cards (just print
   // to the console, no need to get fancy)
-  console.log(`You drew: (${cards})`);
+  console.log(`You drew: (${(formattedCards)})`);
 }
 
 class NotEnoughCardsError extends Error {
