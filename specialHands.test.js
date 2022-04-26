@@ -69,7 +69,6 @@ describe("Special hand suite", () => {
         { value: "Q", suit: "^" },
         { value: "A", suit: "^" },
       ]);
-
       expect(royalFlush1).toEqual(true);
     });
   });
@@ -98,7 +97,7 @@ describe("Special hand suite", () => {
   });
 
   describe("four of a kind", () => {
-    it("Will tell you when you receive a straight flush", () => {
+    it("Will tell you when you receive a four of a kind", () => {
       const fourOfAKind = isFourOfAKind([
         { value: "10", suit: "^" },
         { value: "3", suit: "^" },
