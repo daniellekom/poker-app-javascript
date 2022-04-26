@@ -1,8 +1,14 @@
 const { getSpecialHand } = require("./specialHands");
 
-function deal(numCardsToDeal) {
+function deal(numCardsToDeal) { 
+  // return[{ value: '1', suit: '%'},
+	// {value: '1', suit: '*'},
+	// {value: '1', suit: '@'},
+	// {value: '6', suit: '%'},
+	// {value: '3', suit: '%'},]
   if (numCardsToDeal > 52) throw new NotEnoughCardsError();
   if (numCardsToDeal < 1) throw new InvalidRequestError();
+  
 
   const values = [
     "A",
