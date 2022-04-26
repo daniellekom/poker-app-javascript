@@ -3,8 +3,13 @@ function getSpecialHand(cards) {
   if (isStraightFlush(cards)) return "Straight Flush";
   if (isFourOfAKind(cards)) return "Four of a Kind";
   // if (isFullHouse(cards)) return "Full House";
+  if (isFlush(cards)) return "Flush";
+  if (isStraight(cards)) return "Straight";
   if (isThreeOfaKind(cards)) return "Three of a Kind";
+  if (isTwoPair(cards)) return "Two pair"
   if (isPair(cards)) return "Pair";
+  if(isHighCard(cards)) return 'High Card'
+
 }
 
 function isRoyalFlush(cards) {
@@ -25,10 +30,11 @@ function isStraightFlush(cards) {
   if (!sameSuit) return false;
 
   const straightFlush = cards
-    .map((card) => card.value)
-    .sort((a, b) => a - b)
-    .join();
-  if (straightFlush) return true;
+  let count = 0;
+  for (let i = 0; i<cards.length; i++){
+    if(cards[i].value) count++
+  }
+  if (count == 1) return true;
   return false;
 }
 
@@ -39,7 +45,7 @@ function isFourOfAKind(cards) {
   for (let i = 0; i < cards.length; i++) {
     for (let c = i + 1; c < cards.length; c++) {
      for (let d = c + 1; d < cards.length; d++){ 
-       for(let e = d + 1; e < cards. length; e++){
+       for(let e = d + 1; e < cards.length; e++){
       if (cards[i].value == cards[c].value && cards[c].value == cards[d].value && cards[d].value == cards[e].value ) count++;
     }
   }
@@ -50,16 +56,28 @@ if (count == 1) return true;
 }
 
 // function isFullHouse(cards) {
-//   const sameSuit = new Set(cards.map((card) => card.suit)).size >= 3;
-//   if (!sameSuit) return true;
-
-//   const fullHouse = cards
-//     .map((card) => card.value)
-//     .sort((a, b) => (a === 3, b === 2))
-//     .join();
-//   if (fullHouse) return true;
-//   return false;
+//   isThreeOfaKind() === true && isPair() === true
+//   return true 
 // }
+
+
+function isFlush(cards) {
+  const sameSuit = new Set(cards.map((card) => card.suit)).size === 1;
+  if (sameSuit) return true;
+}
+
+
+function isStraight(cards){
+
+  const straight = cards
+  let count = 0;
+  for (let i = 0; i <cards.length; i++){
+    if(cards[i].value) count++;
+  }
+  if (count == 1) return true;
+  return false;
+}
+
 function isThreeOfaKind(cards) {
   let count = 0;
   for (let i = 0; i < cards.length; i++) {
@@ -69,7 +87,19 @@ function isThreeOfaKind(cards) {
     }
   }
 }
+
 if (count == 1) return true;
+  return false;
+}
+
+function isTwoPair(cards){
+  let count = 0;
+  for (let i = 0; i <cards.length; i++){
+    for (let b = i + 1; b < cards.length; b++ ){
+      if(cards[i].value == cards[b].value) count++;
+    }
+  }
+  if (count ==2) return true;
   return false;
 }
 
@@ -84,5 +114,17 @@ function isPair(cards) {
   if (count == 1) return true;
   return false;
 }
+
+function isHighCard(cards) {
+  const highCard =
+    cards
+      .map((card) => card.value)
+      Math.max(...cards);  
+  if (highCard) return true;
+  return false;
+}
+
+
+
 
 exports.getSpecialHand = getSpecialHand;

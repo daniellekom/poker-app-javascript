@@ -1,11 +1,11 @@
 const { getSpecialHand } = require("./specialHands");
 
 function deal(numCardsToDeal) { 
-  // return[{ value: '1', suit: '%'},
-	// {value: '1', suit: '*'},
-	// {value: '1', suit: '@'},
-	// {value: '6', suit: '%'},
-	// {value: '3', suit: '%'},]
+  // return      [{ value: '2', suit: '@'},
+	// {value: '9', suit: '^'},
+	// {value: '9', suit: '@'},
+	// {value: '7', suit: '^'},
+	// {value: '5', suit: '$'},]
   if (numCardsToDeal > 52) throw new NotEnoughCardsError();
   if (numCardsToDeal < 1) throw new InvalidRequestError();
   
@@ -27,7 +27,7 @@ function deal(numCardsToDeal) {
   ];
   const suits = ["*", "^", "%", "@"];
 
-  //seperating values and suits so we can handle them seperately
+  //seperating values and suits so we can handle them seperately to identify special hands
   let shuffledDeck = values
     .flatMap((value) => suits.map((suit) => ({ value, suit })))
     .sort(() => (Math.random() > 0.5 ? 1 : -1))
