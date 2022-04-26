@@ -1,13 +1,13 @@
 function getSpecialHand(cards) {
-  if (isRoyalFlush(cards)) return "Royal Flush";
+  if (isRoyalFlush(cards)) return "Royal Flush"; 
   if (isStraightFlush(cards)) return "Straight Flush";
   if (isFourOfAKind(cards)) return "Four of a Kind";
   // if (isFullHouse(cards)) return "Full House";
-  if (isFlush(cards)) return "Flush";
+  if (isFlush(cards)) return "Flush"; 
   if (isStraight(cards)) return "Straight";
   if (isThreeOfaKind(cards)) return "Three of a Kind";
   if (isTwoPair(cards)) return "Two pair";
-  if (isPair(cards)) return "Pair";
+  if (isPair(cards)) return "Pair"; 
   if (isHighCard(cards)) return "High Card";
 }
 
@@ -107,7 +107,7 @@ function isTwoPair(cards) {
   return false;
 }
 
-function isPair(cards) {
+ function isPair(cards) {
   let count = 0;
   for (let i = 0; i < cards.length; i++) {
     for (let c = i + 1; c < cards.length; c++) {
@@ -126,3 +126,13 @@ function isHighCard(cards) {
 }
 
 exports.getSpecialHand = getSpecialHand;
+exports.isPair = isPair;
+exports.isRoyalFlush = isRoyalFlush;
+exports.isFlush = isFlush;
+exports.isStraightFlush = isStraightFlush;
+exports.isFourOfAKind = isFourOfAKind;
+exports.isStraight = isStraight;
+exports.isThreeOfaKind = isThreeOfaKind;
+exports.isTwoPair = isTwoPair;
+exports.isHighCard = isHighCard;
+

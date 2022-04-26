@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "jest cards.test.js",
+    "test": "jest specialHands.test.js",
     "start": "node cards.js"
   },
   "devDependencies": {
