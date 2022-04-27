@@ -38,7 +38,6 @@ function isStraightFlush(cards) {
 }
 
 function isFourOfAKind(cards) {
-  const fourOfAKind = cards;
   let count = 0;
   for (let i = 0; i < cards.length; i++) {
     for (let c = i + 1; c < cards.length; c++) {

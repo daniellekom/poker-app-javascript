@@ -2,9 +2,9 @@ const { getSpecialHand } = require("./specialHands");
 
 function deal(numCardsToDeal) {
   // return      [{ value: '2', suit: '@'},
-  // {value: '9', suit: '^'},
-  // {value: '9', suit: '@'},
-  // {value: '7', suit: '^'},
+  // {value: '2', suit: '^'},
+  // {value: '4', suit: '@'},
+  // {value: '4', suit: '^'},
   // {value: '5', suit: '$'},]
   if (numCardsToDeal > 52) throw new NotEnoughCardsError();
   if (numCardsToDeal < 1) throw new InvalidRequestError();
@@ -35,7 +35,7 @@ function deal(numCardsToDeal) {
   return shuffledDeck;
 }
 
-//gathering them back here
+// gathering them back here
 function report(cards) {
   const specialHand = getSpecialHand(cards);
   const formattedCards = cards.map((card) => `${card.value}${card.suit}`);
@@ -46,6 +46,49 @@ function report(cards) {
     console.log(`You drew: (${formattedCards}), a ${specialHand}`);
   else console.log(`You drew: (${formattedCards})`);
 }
+
+function play() {
+  const playerOneCards = deal(5);
+  const playerTwoCards = deal(5);
+  const specialHand = getSpecialHand(playerOneCards);
+  const specialHand1 = getSpecialHand(playerTwoCards);
+  const formattedCards = playerOneCards.map(
+    (card) => `${card.value}${card.suit}`
+  );
+  const formattedCards1 = playerTwoCards.map(
+    (card) => `${card.value}${card.suit}`
+  );
+
+  if (specialHand || specialHand1)
+   { console.log(
+      `player 1 drew:(${formattedCards}), a ${specialHand} \nplayer 2 drew:(${formattedCards1}), a ${specialHand1} `
+    );
+    compareHands(specialHand,specialHand1)}
+  else
+    console.log(
+      `player 1 drew: (${formattedCards}), play 2 drew:(${formattedCards})`
+    );
+}
+
+function compareHands(handOne, handTwo) {
+  const specialHands = [
+    "Royal Flush",
+    "Straight Flush",
+    "Four of a Kind",
+    "Flush",
+    "Straight",
+    "Three of a Kind",
+    "Two pair",
+    "Pair",
+    "High Card",
+  ];
+  const rankHandOne = specialHands.indexOf(handOne);
+  const rankHandTwo = specialHands.indexOf(handTwo);
+  if (rankHandOne < rankHandTwo) {
+    console.log("player one wins!");
+  } else console.log("player two wins!");
+}
+
 
 class NotEnoughCardsError extends Error {
   constructor() {
@@ -61,5 +104,6 @@ class InvalidRequestError extends Error {
 
 exports.deal = deal;
 exports.report = report;
+exports.play = play;
 exports.NotEnoughCardsError = NotEnoughCardsError;
 exports.InvalidRequestError = InvalidRequestError;

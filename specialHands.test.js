@@ -72,7 +72,6 @@ describe("Special hand suite", () => {
       expect(royalFlush1).toEqual(true);
     });
   });
-
   describe("straight flush", () => {
     it("Will tell you when you receive a straight flush", () => {
       const straightFlush = isStraightFlush([
@@ -91,11 +90,9 @@ describe("Special hand suite", () => {
         { value: "7", suit: "^" },
         { value: "6", suit: "^" },
       ]);
-
       expect(straightFlush1).toEqual(true);
     });
   });
-
   describe("four of a kind", () => {
     it("Will tell you when you receive a four of a kind", () => {
       const fourOfAKind = isFourOfAKind([
@@ -188,12 +185,13 @@ describe("Special hand suite", () => {
   describe("a high card", () => {
     it("Will tell you when you received a high card", () => {
       const highCard = isHighCard([
+        { value: "4", suit: "^" },
+        { value: "5", suit: "*" },
+        { value: "3", suit: "%" },
+        { value: "6", suit: "@" },
         { value: "8", suit: "^" },
-        { value: "2", suit: "^" },
-        { value: "2", suit: "*" },
-        { value: "7", suit: "%" },
-        { value: "3", suit: "^" },
       ]);
+
       expect(highCard).toEqual(false);
 
       const highCard1 = isHighCard([
