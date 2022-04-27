@@ -8,7 +8,6 @@ function getSpecialHand(cards) {
   if (isThreeOfaKind(cards)) return "Three of a Kind";
   if (isTwoPair(cards)) return "Two pair";
   if (isPair(cards)) return "Pair"; 
-  if (isHighCard(cards)) return "High Card";
 }
 
 function isRoyalFlush(cards) {
@@ -64,7 +63,7 @@ function isFourOfAKind(cards) {
 
 function isFlush(cards) {
   const sameSuit = new Set(cards.map((card) => card.suit)).size === 1;
-  if (sameSuit) return true;
+  return sameSuit;
 }
 
 function isStraight(cards) {
@@ -117,12 +116,7 @@ function isTwoPair(cards) {
   return false;
 }
 
-function isHighCard(cards) {
-  const highCard = cards.map((card) => card.value);
-  Math.max(...cards);
-  if (highCard) return true;
-  return false;
-}
+
 
 exports.getSpecialHand = getSpecialHand;
 exports.isPair = isPair;
@@ -133,5 +127,4 @@ exports.isFourOfAKind = isFourOfAKind;
 exports.isStraight = isStraight;
 exports.isThreeOfaKind = isThreeOfaKind;
 exports.isTwoPair = isTwoPair;
-exports.isHighCard = isHighCard;
 

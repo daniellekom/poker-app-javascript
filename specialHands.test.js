@@ -6,11 +6,10 @@ import { isFourOfAKind } from "./specialHands";
 import { isFlush } from "./specialHands";
 import { isStraight } from "./specialHands";
 import { isTwoPair } from "./specialHands";
-import { isHighCard } from "./specialHands";
 
 describe("Special hand suite", () => {
   describe("is a pair", () => {
-    it("Will tell you when received a pair", () => {
+    it("should return false if its not a pair", () => {
       const pair = isPair([
         { value: "2", suit: "%" },
         { value: "3", suit: "%" },
@@ -19,7 +18,8 @@ describe("Special hand suite", () => {
         { value: "6", suit: "%" },
       ]);
       expect(pair).toEqual(false);
-
+    });
+    it("should return true if its a pair", () => {
       const pair2 = isPair([
         { value: "2", suit: "%" },
         { value: "3", suit: "%" },
@@ -31,7 +31,7 @@ describe("Special hand suite", () => {
     });
   });
   describe("three of a kind", () => {
-    it("Will tell you when received a 3 of a kind", () => {
+    it("should return false if its not a three of a kind ", () => {
       const threeOfaKind = isThreeOfaKind([
         { value: "3", suit: "^" },
         { value: "9", suit: "@" },
@@ -40,7 +40,8 @@ describe("Special hand suite", () => {
         { value: "6", suit: "%" },
       ]);
       expect(threeOfaKind).toEqual(false);
-
+    });
+    it("should return true if its a three of a kind ", () => {
       const threeOfaKind1 = isThreeOfaKind([
         { value: "3", suit: "%" },
         { value: "3", suit: "@" },
@@ -52,7 +53,7 @@ describe("Special hand suite", () => {
     });
   });
   describe("Royal Flush", () => {
-    it("Will tell you when you receive a royal flush", () => {
+    it("should return false if its not a royal flush", () => {
       const royalFlush = isRoyalFlush([
         { value: "10", suit: "^" },
         { value: "3", suit: "^" },
@@ -61,7 +62,8 @@ describe("Special hand suite", () => {
         { value: "A", suit: "^" },
       ]);
       expect(royalFlush).toEqual(false);
-
+    });
+    it("should return true if its a royal flush", () => {
       const royalFlush1 = isRoyalFlush([
         { value: "10", suit: "^" },
         { value: "J", suit: "^" },
@@ -73,7 +75,7 @@ describe("Special hand suite", () => {
     });
   });
   describe("straight flush", () => {
-    it("Will tell you when you receive a straight flush", () => {
+    it("should return false when it is not a straight flush", () => {
       const straightFlush = isStraightFlush([
         { value: "10", suit: "^" },
         { value: "3", suit: "^" },
@@ -82,7 +84,8 @@ describe("Special hand suite", () => {
         { value: "A", suit: "^" },
       ]);
       expect(straightFlush).toEqual(false);
-
+    });
+    it("should return true when it is a straight flush", () => {
       const straightFlush1 = isStraightFlush([
         { value: "10", suit: "^" },
         { value: "9", suit: "^" },
@@ -94,7 +97,7 @@ describe("Special hand suite", () => {
     });
   });
   describe("four of a kind", () => {
-    it("Will tell you when you receive a four of a kind", () => {
+    it("should return false when it is not a four of a kind", () => {
       const fourOfAKind = isFourOfAKind([
         { value: "10", suit: "^" },
         { value: "3", suit: "^" },
@@ -103,8 +106,9 @@ describe("Special hand suite", () => {
         { value: "A", suit: "^" },
       ]);
       expect(fourOfAKind).toEqual(false);
-
-      const fourOfAKind1 = isFourOfAkind([
+    });
+    it("should return true when you receive a four of a kind", () => {
+      const fourOfAKind1 = isFourOfAKind([
         { value: "3", suit: "%" },
         { value: "3", suit: "@" },
         { value: "3", suit: "^" },
@@ -117,7 +121,7 @@ describe("Special hand suite", () => {
   });
 
   describe("flush", () => {
-    it("Will tell you when you receive a flush", () => {
+    it("should return false when it is not a flush", () => {
       const flush = isFlush([
         { value: "10", suit: "^" },
         { value: "3", suit: "^" },
@@ -126,7 +130,8 @@ describe("Special hand suite", () => {
         { value: "A", suit: "^" },
       ]);
       expect(flush).toEqual(false);
-
+    });
+    it("should return true when receiving a flush", () => {
       const flush1 = isFlush([
         { value: "4", suit: "^" },
         { value: "3", suit: "^" },
@@ -139,7 +144,7 @@ describe("Special hand suite", () => {
     });
   });
   describe("straight", () => {
-    it("Will tell you when you receive a straight", () => {
+    it("should return false when its not a straight", () => {
       const straight = isStraight([
         { value: "8", suit: "^" },
         { value: "3", suit: "^" },
@@ -148,7 +153,8 @@ describe("Special hand suite", () => {
         { value: "A", suit: "^" },
       ]);
       expect(straight).toEqual(false);
-
+    });
+    it("should return true when its a straight", () => {
       const straight1 = isStraight([
         { value: "4", suit: "^" },
         { value: "5", suit: "*" },
@@ -161,7 +167,7 @@ describe("Special hand suite", () => {
     });
   });
   describe("two pair", () => {
-    it("Will tell you when you receive 2 pairs", () => {
+    it("should return false when its not a two pair", () => {
       const twoPair = isTwoPair([
         { value: "8", suit: "^" },
         { value: "3", suit: "^" },
@@ -170,7 +176,8 @@ describe("Special hand suite", () => {
         { value: "3", suit: "^" },
       ]);
       expect(twoPair).toEqual(false);
-
+    });
+    it("should return true when its a two pair", () => {
       const twoPair1 = isTwoPair([
         { value: "4", suit: "^" },
         { value: "4", suit: "*" },
@@ -178,31 +185,7 @@ describe("Special hand suite", () => {
         { value: "6", suit: "@" },
         { value: "8", suit: "^" },
       ]);
-
       expect(twoPair1).toEqual(true);
-    });
-  });
-  describe("a high card", () => {
-    it("Will tell you when you received a high card", () => {
-      const highCard = isHighCard([
-        { value: "4", suit: "^" },
-        { value: "5", suit: "*" },
-        { value: "3", suit: "%" },
-        { value: "6", suit: "@" },
-        { value: "8", suit: "^" },
-      ]);
-
-      expect(highCard).toEqual(false);
-
-      const highCard1 = isHighCard([
-        { value: "4", suit: "^" },
-        { value: "9", suit: "*" },
-        { value: "3", suit: "%" },
-        { value: "6", suit: "@" },
-        { value: "8", suit: "^" },
-      ]);
-
-      expect(highCard1).toEqual(true);
     });
   });
 });

@@ -68,8 +68,8 @@ Jack = J
 
 Examples:
 ```shell
-$ node main.js 5
-You drew (7^ K^ 4% 10* A@)
+$ 
+You drew node main.js 5(7^ K^ 4% 10* A@)
 $ node main.js 1
 You drew (5%)
 $ node main.js 4
