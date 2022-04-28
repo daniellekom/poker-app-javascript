@@ -27,14 +27,22 @@ function isStraightFlush(cards) {
   const sameSuit = new Set(cards.map((card) => card.suit)).size === 1;
   if (!sameSuit) return false;
 
-  const straightFlush = cards;
-  let count = 0;
-  for (let i = 0; i < cards.length; i++) {
-    if (cards[i].value) count++;
+  const cardOrder=['2','3','4','5','6','7','8','9','10','J','Q','K','A']
+  const cardPower = cards
+    .map(card => card.value)
+    .map(card => cardOrder.indexOf(card))
+    .sort((a,b) => a-b)
+
+  const sequence = cardPower.map(power => power - cardPower[0])
+
+  for(let i = 0; i < 5; i++){
+    if(sequence[i] !== i) 
+      return false
   }
-  if (count == 1) return true;
-  return false;
+
+  return true
 }
+
 
 function isFourOfAKind(cards) {
   let count = 0;
@@ -56,10 +64,10 @@ function isFourOfAKind(cards) {
   return false;
 }
 
-// function isFullHouse(cards) {
-//   isThreeOfaKind() === true && isPair() === true
-//   return true
-// }
+function isFullHouse(cards) {
+  isThreeOfaKind() === true && isPair() === true
+  return true
+}
 
 function isFlush(cards) {
   const sameSuit = new Set(cards.map((card) => card.suit)).size === 1;
@@ -67,13 +75,19 @@ function isFlush(cards) {
 }
 
 function isStraight(cards) {
-  const straight = cards;
-  let count = 0;
-  for (let i = 0; i < cards.length; i++) {
-    if (cards[i].value) count++;
+  const cardOrder=['2','3','4','5','6','7','8','9','10','J','Q','K','A']
+  const cardPower = cards
+    .map(card => card.value)
+    .map(card => cardOrder.indexOf(card))
+    .sort((a,b) => a-b)
+
+  const sequence = cardPower.map(power => power - cardPower[0])
+
+  for(let i = 0; i < 5; i++){
+    if(sequence[i] !== i) 
+      return false
   }
-  if (count == 1) return true;
-  return false;
+  return true
 }
 
 function isThreeOfaKind(cards) {
