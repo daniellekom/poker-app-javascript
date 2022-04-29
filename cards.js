@@ -1,11 +1,7 @@
 const { getSpecialHand } = require("./specialHands");
 
 function deal(numCardsToDeal) {
-   return      [{ value: '8', suit: '@'},
-   {value: '8', suit: '*'},
-   {value: '8', suit: '^'},
-   {value: '9', suit: '@'},
-   {value: '9', suit: '*'},]
+
   if (numCardsToDeal > 52) throw new NotEnoughCardsError();
   if (numCardsToDeal < 1) throw new InvalidRequestError();
 
@@ -50,8 +46,8 @@ function report(cards) {
 function play() {
   const playerOneCards = deal(5);
   const playerTwoCards = deal(5);
-  const specialHand = getSpecialHand(playerOneCards);
-  const specialHand1 = getSpecialHand(playerTwoCards);
+  const playerOneSpecialHand = getSpecialHand(playerOneCards);
+  const playerTwoSpecialHand = getSpecialHand(playerTwoCards);
   const formattedCards = playerOneCards.map(
     (card) => `${card.value}${card.suit}`
   );
@@ -59,14 +55,14 @@ function play() {
     (card) => `${card.value}${card.suit}`
   );
 
-  if (specialHand || specialHand1)
+  if (playerOneSpecialHand || playerTwoSpecialHand)
    { console.log(
-      `player 1 drew:(${formattedCards}), a ${specialHand} \nplayer 2 drew:(${formattedCards1}), a ${specialHand1} `
+      `player 1 drew:(${formattedCards}), a ${playerOneSpecialHand} \nplayer 2 drew:(${formattedCards1}), a ${playerTwoSpecialHand} `
     );
-    compareHands(specialHand,specialHand1)}
+    compareHands(playerOneSpecialHand,playerTwoSpecialHand)}
   else
     console.log(
-      `player 1 drew: (${formattedCards}), play 2 drew:(${formattedCards})`
+      `player 1 drew: (${formattedCards}), player 2 drew:(${formattedCards1})`
     );
 }
 
@@ -80,13 +76,17 @@ function compareHands(handOne, handTwo) {
     "Three of a Kind",
     "Two pair",
     "Pair",
-    "High Card",
+    // "High Card",
   ];
   const rankHandOne = specialHands.indexOf(handOne);
   const rankHandTwo = specialHands.indexOf(handTwo);
-  if (rankHandOne < rankHandTwo) {
+  if (rankHandOne == rankHandTwo) {
+    //Check which hand has higher card
+    console.log("it's a tie");
+  } else if (rankHandOne < rankHandTwo) {
     console.log("player one wins!");
-  } else console.log("player two wins!");
+  }
+  else console.log("player two wins!");
 }
 
 

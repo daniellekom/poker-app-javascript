@@ -8,7 +8,7 @@ import { isStraight } from "./specialHands";
 import { isTwoPair } from "./specialHands";
 
 describe("Special hand suite", () => {
-  describe("is a pair", () => {
+ 
     it("should return false if its not a pair", () => {
       const pair = isPair([
         { value: "2", suit: "%" },
@@ -188,4 +188,3 @@ describe("Special hand suite", () => {
       expect(twoPair1).toEqual(true);
     });
   });
-});

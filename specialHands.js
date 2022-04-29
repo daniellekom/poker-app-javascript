@@ -132,6 +132,7 @@ function isTwoPair(cards) {
 
 
 
+
 exports.getSpecialHand = getSpecialHand;
 exports.isPair = isPair;
 exports.isRoyalFlush = isRoyalFlush;
