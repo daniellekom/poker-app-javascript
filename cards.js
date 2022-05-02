@@ -48,23 +48,20 @@ function play() {
   const playerTwoCards = deal(5);
   const playerOneSpecialHand = getSpecialHand(playerOneCards);
   const playerTwoSpecialHand = getSpecialHand(playerTwoCards);
-  const formattedCards = playerOneCards.map(
+  const playerOneFormattedCards = playerOneCards.map(
     (card) => `${card.value}${card.suit}`
   );
-  const formattedCards1 = playerTwoCards.map(
+  const playerTwoFormattedCards = playerTwoCards.map(
     (card) => `${card.value}${card.suit}`
   );
 
-  if (playerOneSpecialHand || playerTwoSpecialHand)
-   { console.log(
-      `player 1 drew:(${formattedCards}), a ${playerOneSpecialHand} \nplayer 2 drew:(${formattedCards1}), a ${playerTwoSpecialHand} `
-    );
-    compareHands(playerOneSpecialHand,playerTwoSpecialHand)}
-  else
-    console.log(
-      `player 1 drew: (${formattedCards}), player 2 drew:(${formattedCards1})`
-    );
-}
+  console.log(`player 1 drew:(${playerOneFormattedCards})` + ( playerOneSpecialHand ? `, a ${playerOneSpecialHand}` : '' ));
+  console.log(`player 2 drew:(${playerTwoFormattedCards})` +(playerTwoSpecialHand ?`, a ${playerTwoSpecialHand}`: '' ));
+
+  // if (playerOneSpecialHand || playerTwoSpecialHand){
+    compareHands(playerOneSpecialHand,playerTwoSpecialHand)
+  // }
+  }
 
 function compareHands(handOne, handTwo) {
   const specialHands = [
@@ -76,7 +73,8 @@ function compareHands(handOne, handTwo) {
     "Three of a Kind",
     "Two pair",
     "Pair",
-    // "High Card",
+    undefined
+  
   ];
   const rankHandOne = specialHands.indexOf(handOne);
   const rankHandTwo = specialHands.indexOf(handTwo);
