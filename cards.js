@@ -43,9 +43,7 @@ function report(cards) {
   else console.log(`You drew: (${formattedCards})`);
 }
 
-function play() {
-  const playerOneCards = deal(5);
-  const playerTwoCards = deal(5);
+function play(playerOneCards,playerTwoCards) {
   const playerOneSpecialHand = getSpecialHand(playerOneCards);
   const playerTwoSpecialHand = getSpecialHand(playerTwoCards);
   const playerOneFormattedCards = playerOneCards.map(
@@ -55,12 +53,16 @@ function play() {
     (card) => `${card.value}${card.suit}`
   );
 
-  console.log(`player 1 drew:(${playerOneFormattedCards})` + ( playerOneSpecialHand ? `, a ${playerOneSpecialHand}` : '' ));
-  console.log(`player 2 drew:(${playerTwoFormattedCards})` +(playerTwoSpecialHand ?`, a ${playerTwoSpecialHand}`: '' ));
+    let result = ''
+
+    result += `player 1 drew:(${playerOneFormattedCards})` + ( playerOneSpecialHand ? `, a ${playerOneSpecialHand}` : '' );
+    result += `\nplayer 2 drew:(${playerTwoFormattedCards})` +(playerTwoSpecialHand ?`, a ${playerTwoSpecialHand}`: '' );
 
   // if (playerOneSpecialHand || playerTwoSpecialHand){
-    compareHands(playerOneSpecialHand,playerTwoSpecialHand)
+    result += '\n' + compareHands(playerOneSpecialHand,playerTwoSpecialHand)
   // }
+
+    return result
   }
 
 function compareHands(handOne, handTwo) {
@@ -80,11 +82,12 @@ function compareHands(handOne, handTwo) {
   const rankHandTwo = specialHands.indexOf(handTwo);
   if (rankHandOne == rankHandTwo) {
     //Check which hand has higher card
-    console.log("it's a tie");
+    return "it's a tie";
   } else if (rankHandOne < rankHandTwo) {
-    console.log("player one wins!");
+    return "player one wins!";
   }
-  else console.log("player two wins!");
+  else 
+    return "player two wins!";
 }
 
 

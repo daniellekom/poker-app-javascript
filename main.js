@@ -7,8 +7,10 @@ if (process.argv.length !== 3) {
 
 
 if ( process.argv[2]== "play") {
-play()
-  // console.log(report(deal(5)))
+  const playerOneCards = deal(5)
+  const playerTwoCards =deal(5)
+  const result = play(playerOneCards, playerTwoCards)
+  console.log(result)
   process.exit(0);
   
 }
