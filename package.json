@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test-report": "jest report.test.js",
     "test": "jest",
-    "start": "node cards.js"
+    "start": "node src/main.js play"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.17.9",
