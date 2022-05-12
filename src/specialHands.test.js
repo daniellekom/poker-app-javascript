@@ -1,5 +1,6 @@
 import {
-  isPair, isThreeOfaKind, isRoyalFlush, isStraightFlush, isFourOfAKind, isFlush, isStraight, isTwoPair,
+  isPair, isThreeOfaKind, isRoyalFlush, isStraightFlush, isFourOfAKind, isFlush,
+  isStraight, isTwoPair,
 } from './specialHands';
 
 describe('Special hand suite', () => {

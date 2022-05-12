@@ -14,7 +14,7 @@ if (process.argv[2] === 'play') {
   process.exit(0);
 }
 
-const numCards = parseInt(process.argv[2]);
+const numCards = parseInt(process.argv[2], 10);
 if (isNaN(numCards)) {
   console.log('You must ask for a number between 1 and 5');
   process.exit(1);

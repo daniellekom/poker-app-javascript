@@ -13,6 +13,8 @@
     },
     "parser": "@babel/eslint-parser",
     "rules": {
-        "no-plusplus": "off"
+        "no-plusplus": "off",
+        "max-classes-per-file": "off",
+        "no-console": "off"
     }
 }
